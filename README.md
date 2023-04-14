@@ -1,5 +1,5 @@
 # Data Analyst Skills
-The project describes what skills to learn, what skills are requested, what skills are usually posted in job posts, what skills pay more and also most used job title keywords
+The dashboard helps you figure out the most requested data Analyst skills and the salary
 
 
 # Problem

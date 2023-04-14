@@ -1,0 +1,192 @@
+
+
+
+--Remove array brackets [ ]
+WITH brackets_removed AS (SELECT 	
+title, location, schedule_type,search_location, 
+salary, salary_pay, salary_rate, salary_avg, salary_min, salary_max, salary_hourly, salary_yearly, salary_standardized,
+REGEXP_REPLACE((SUBSTR(description_tokens, STRPOS(description_tokens, '[')+1)), SUBSTR(description_tokens, STRPOS(description_tokens, ']')-0) , "") AS posts
+FROM `jobSearch.posts`
+where description_tokens <> '[]'),
+
+--remove commas and apostrophe then split to create a list
+lists AS (SELECT 
+title, location, schedule_type,search_location, 
+salary, salary_pay, salary_rate, salary_avg, salary_min, salary_max, salary_hourly, salary_yearly, salary_standardized,
+SPLIT (REGEXP_REPLACE (REGEXP_REPLACE(posts, ",", ''), "'", ''), ' ')  AS list
+FROM brackets_removed),
+
+skills AS (SELECT
+title, location, schedule_type,search_location, 
+salary, salary_pay, salary_rate, salary_avg, salary_min, salary_max, salary_hourly, salary_yearly, salary_standardized, skill
+FROM lists, UNNEST (list) skill),
+
+--Grouping skills, jobs and hours
+final AS (SELECT
+title, location, schedule_type,search_location, 
+salary, salary_pay, salary_rate, salary_avg, salary_min, salary_max, salary_hourly, salary_yearly, salary_standardized, skill, 
+--Grouping Skills
+CASE skill 
+WHEN 'sql' THEN 'Languages' 
+WHEN 'python' THEN 'Languages' 
+WHEN 'r' THEN 'Languages' 
+WHEN 'sas' THEN 'Languages'
+WHEN 'go' THEN 'Languages' 
+WHEN 'c' THEN 'Languages' 
+WHEN 'scala' THEN 'Languages' 
+WHEN 'nosql' THEN 'Languages'
+WHEN 'vba' THEN 'Languages' 
+WHEN 'javascript' THEN 'Languages' 
+WHEN 'java' THEN 'Languages' 
+WHEN 'matlab' THEN 'Languages' 
+WHEN 'swift' THEN 'Languages' 
+WHEN 'c++' THEN 'Languages'
+WHEN 'html' THEN 'Languages' 
+WHEN 'crystal' THEN 'Languages' 
+WHEN 'visual_basic' THEN 'Languages' 
+WHEN 'mongodb' THEN 'Languages'
+WHEN 'powershell' THEN 'Languages' 
+WHEN 'css' THEN 'Languages' 
+WHEN 'ruby' THEN 'Languages' 
+WHEN 'assembly' THEN 'Languages'
+WHEN 'mssql' THEN 'Languages' 
+WHEN 'perl' THEN 'Languages' 
+WHEN 'bash' THEN 'Languages' 
+WHEN 'php' THEN 'Languages'
+WHEN 'c/c++' THEN 'Languages' 
+WHEN 'julia' THEN 'Languages' 
+WHEN 'no-sql' THEN 'Languages' 
+WHEN 'vb.net' THEN 'Languages'
+WHEN 'mongo' THEN 'Languages' 
+WHEN 'golang' THEN 'Languages' 
+WHEN 'js' THEN 'Languages' 
+WHEN 'cobol' THEN 'Languages'
+WHEN 'typescript' THEN 'Languages'
+WHEN 'fortran' THEN 'Languages' 
+WHEN 'apl' THEN 'Languages' 
+WHEN 'rust' THEN 'Languages' 
+WHEN 'groovy' THEN 'Languages'
+WHEN 'dart' THEN 'Languages' 
+WHEN 'solidity' THEN 'Languages'
+
+WHEN 'tableau' THEN 'Analytical tools'
+WHEN 'excel' THEN 'Analytical tools'
+WHEN 'word' THEN 'Analytical tools'
+WHEN 'powerpoint' THEN 'Analytical tools'
+WHEN 'spreadsheet' THEN 'Analytical tools'
+WHEN 'looker' THEN 'Analytical tools'
+WHEN 'powerbi' THEN 'Analytical tools'
+WHEN 'power_bi' THEN 'Analytical tools'
+WHEN 'outlook' THEN 'Analytical tools'
+WHEN 'sas' THEN 'Analytical tools'
+WHEN 'sharepoint' THEN 'Analytical tools'
+WHEN 'powerpoints' THEN 'Analytical tools'
+WHEN 'sap' THEN 'Analytical tools'
+WHEN 'qlik' THEN 'Analytical tools'
+WHEN 'looker' THEN 'Analytical tools'
+WHEN 'alteryx' THEN 'Analytical tools'
+WHEN 'spss' THEN 'Analytical tools'
+WHEN 'ssrs' THEN 'Analytical tools'
+WHEN 'splunk' THEN 'Analytical tools'
+WHEN 'microstrategy' THEN 'Analytical tools'
+WHEN 'dax' THEN 'Analytical tools'
+WHEN 'visio' THEN 'Analytical tools'
+WHEN 'cognos' THEN 'Analytical tools'
+WHEN 'nuix' THEN 'Analytical tools'
+WHEN 'esquisse' THEN 'Analytical tools'
+WHEN 'bitbucket' THEN 'Analytical tools'
+WHEN 'git' THEN 'Analytical tools'
+WHEN 'github' THEN 'Analytical tools'
+WHEN 'plotly' THEN 'Analytical tools'
+WHEN 'ggplot2' THEN 'Analytical tools'
+WHEN 'jquery' THEN 'Analytical tools'
+WHEN 'gitlab' THEN 'Analytical tools'
+
+WHEN 'sql' THEN 'Databases'
+WHEN 'mysql' THEN 'Databases'
+WHEN 'cassandra' THEN 'Databases'
+WHEN 'postgresql' THEN 'Databases'
+WHEN 'mongodb' THEN 'Databases'
+WHEN 'elasticsearch' THEN 'Databases'
+WHEN 'dynamodb' THEN 'Databases'
+WHEN 'db2' THEN 'Databases'
+WHEN 'redis' THEN 'Databases'
+WHEN 'neo4j' THEN 'Databases'
+WHEN 'mariadb' THEN 'Databases'
+WHEN 'firebase' THEN 'Databases'
+WHEN 'couchbase' THEN 'Databases'
+WHEN 'sqlite' THEN 'Databases'
+WHEN 'firestore' THEN 'Databases'
+WHEN 'couchdb' THEN 'Databases'
+
+WHEN 'aws' THEN 'Cloud tools'
+WHEN 'azure' THEN 'Cloud tools'
+WHEN 'snowflake' THEN 'Cloud tools'
+WHEN 'redshift' THEN 'Cloud tools'
+WHEN 'databricks' THEN 'Cloud tools'
+WHEN 'oracle' THEN 'Cloud tools'
+WHEN 'gcp' THEN 'Cloud tools'
+WHEN 'bigquery' THEN 'Cloud tools'
+WHEN 'aurora' THEN 'Cloud tools'
+WHEN 'ibm' THEN 'Cloud tools'
+WHEN 'tensorflow' THEN 'Cloud tools'
+ELSE 'other' END AS segments,
+--Grouping job titles
+case 
+    when lower(title) like '%science%' then 'Data Science'
+    when lower(title) like '%scientist%' then 'Data Science'
+    when lower(title) like '%scientists%' then 'Data Science'
+    when lower(title) like '%programming%' then 'Data Science'
+    when lower(title) like '%php%' then 'Data Science'
+    when lower(title) like '%python%' then 'Data Science'
+    when lower(title) like '%developer%' then 'Data Science'
+
+    when lower(title) like '%analyst%' then 'Data Analyst'
+    when lower(title) like '%analysis%' then 'Data Analyst' 
+    when lower(title) like '%analytics%' then 'Data Analyst'
+    when lower(title) like '%analsyt%' then 'Data Analyst'
+    when lower(title) like '%anlayst%' then 'Data Analyst'
+    when lower(title) like '%analyze%' then 'Data Analyst'
+    when lower(title) like '%big data%' then 'Data Analyst'
+    when lower(title) like '%excel%' then 'Data Analyst'
+    when lower(title) like '%visualization%' then 'Data Analyst'
+    when lower(title) like '%visualisation%' then 'Data Analyst'
+    when lower(title) like '%data specialist%' then 'Data Analyst'
+    when lower(title) like '%administrator%' then 'Data Analyst'
+    when lower(title) like '%manager%' then 'Data Analyst'
+
+    when lower(title) like '%machine learning%' then 'Machine Learning'
+    when lower(title) like '%econometrics%' then 'Machine Learning'
+    when lower(title) like '%statistics%' then 'Machine Learning'
+    when lower(title) like '%statistical%' then 'Machine Learning'
+    when lower(title) like '%statistician%' then 'Machine Learning'
+    when lower(title) like '%regression%' then 'Machine Learning'
+    when lower(title) like '%artificial intelligence%' then 'Machine Learning' 
+    when lower(title) like '%Intelligence%' then 'Machine Learning'
+    when title like '%Ai%' then 'Machine Learning'
+    when title like '%AI%' then 'Machine Learning'
+    when title like '%ML%' then 'Machine Learning'
+    when title like '%BI%' then 'Machine Learning'
+
+    
+    when lower(title) like '%engineer%' then 'Data Engineer'
+    when lower(title) like '%engineering%' then 'Data Engineer'
+    when lower(title) like '%architect%' then 'Data Engineer'
+    else 'other' 
+ end as job_title,
+--grouping hours
+case salary_rate
+    when 'a month' then 'Monthly'
+    when 'a year' then 'Annually'
+    when 'an hour' then 'Hourly'
+    else null
+  end as time_period
+
+FROM skills)
+
+SELECT
+title, location, schedule_type,search_location, 
+salary, salary_pay, salary_rate, salary_avg, salary_min, salary_max, salary_hourly, salary_yearly, salary_standardized, skill, segments, job_title, time_period
+from final
+
+

@@ -17,7 +17,7 @@ The dashboard helps you figure out the most requested data Analyst skills and th
 - R
 
 ## 6 Overall Top Paid Skills in the US for Recruiting Data Analysts.
-- bitbuckt
+- bitbucket
 - mssql
 - ggplot2
 - aurora

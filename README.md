@@ -1,6 +1,7 @@
 # [Data Analyst Skills](https://lookerstudio.google.com/u/0/reporting/48f5add4-8495-48fe-8745-45f2b622e6c2/page/tEnnC)
 The dashboard helps you figure out the most requested data Analyst skills and the salary
-
+![Screenshot (268)](https://github.com/Shirley22225/DataAnalystSkills/assets/3306225/c0cc5f6f-b540-4ee1-aade-9013134cce2e)
+![Screenshot (269)](https://github.com/Shirley22225/DataAnalystSkills/assets/3306225/e28a1cb7-70b3-4391-9678-2500761b424b)
 
 ## Problem
 - What to learn
@@ -65,6 +66,9 @@ The dashboard helps you figure out the most requested data Analyst skills and th
 - A [basic knowledge](https://intellipaat.com/blog/data-science-prerequisites/#:~:text=Mathematics%20is%20one%20of%20the,feature%20engineering%20and%20data%20preprocessing.) of mathematics is recommended. 
 - Have [practical knowledge](https://business.linkedin.com/talent-solutions/resources/how-to-hire-guides/data-analyst/job-description) when applying.
 - Women in [Kansas City](https://siliconprairienews.com/2022/06/2022-proves-missouri-is-the-u-s-s-next-tech-hub/#:~:text=Unsurprisingly%2C%20the%20Brookings%20Institution%20recognized,women%20in%20the%20tech%20industry.) are advantaged to apply.
+
+
+
 
 
 

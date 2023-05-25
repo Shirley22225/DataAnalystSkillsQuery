@@ -9,12 +9,7 @@ The dashboard helps you figure out the most requested data Analyst skills and th
 - Job title keywords
 
 ## 6 Overall Top Skills in the US Required for Recruiting Data Analysts.
-- Sql
-- Excel
-- Tableau
-- Python
-- Power BI
-- R
+![Screenshot (244)](https://github.com/Shirley22225/DataAnalystSkills/assets/3306225/03c914a3-a6f3-47cb-8a88-b2033b68a2bf)
 
 ## 6 Overall Top Paid Skills in the US for Recruiting Data Analysts.
 - bitbucket

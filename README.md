@@ -1,6 +1,7 @@
 # [Data Analyst Skills](https://lookerstudio.google.com/u/0/reporting/48f5add4-8495-48fe-8745-45f2b622e6c2/page/tEnnC)
 The dashboard helps you figure out the most requested data Analyst skills and the salary
 
+
 ## Problem
 - What to learn
 - What skills are requested
@@ -61,7 +62,7 @@ The dashboard helps you figure out the most requested data Analyst skills and th
 - Keep Learning more skills.
 
  # Additional Recommendations
-- A basic knowledge(https://intellipaat.com/blog/data-science-prerequisites/#:~:text=Mathematics%20is%20one%20of%20the,feature%20engineering%20and%20data%20preprocessing.) of mathematics is recommended. 
+- A !.[basic knowledge](https://intellipaat.com/blog/data-science-prerequisites/#:~:text=Mathematics%20is%20one%20of%20the,feature%20engineering%20and%20data%20preprocessing.) of mathematics is recommended. 
 - Have practical knowledge when applying.
 - Women in Kansas City are advantaged to apply.
 
